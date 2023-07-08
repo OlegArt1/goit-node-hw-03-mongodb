@@ -64,20 +64,11 @@ async function createContact (req, res)
         };
         const newContact = await Contact.create(contact);
 
-        if (!newContact)
-        {
-            console.log("\nMissing required name field!\n");
+        console.log("\nContact added!\n");
 
-            return res.status(400).send({ message: "Missing required name field!" });
-        }
-        else
-        {
-            console.log("\nContact added!\n");
-
-            console.log(req.body + "\n");
+        console.log(req.body + "\n");
         
-            return res.status(201).send({ message: "Contact added!" });
-        }
+        return res.status(201).send({ message: "Contact added!" });
     }
     catch (error)
     {
