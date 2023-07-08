@@ -62,7 +62,7 @@ async function createContact (req, res)
             phone: req.body.phone,
             favorite: req.body.favorite,
         };
-        const newContact = await Contact.create(contact);
+        await Contact.create(contact);
 
         console.log("\nContact added!\n");
 
@@ -91,7 +91,7 @@ async function updateContact (req, res)
         };
         const updatedContact = await Contact.findByIdAndUpdate(id, newContact, { new: true });
 
-        if (!updatedContact)
+        if (updatedContact === null)
         {
             console.log("\nContact not found!\n");
 
@@ -125,7 +125,7 @@ async function updateStatusContact (req, res)
         };
         const updatedContact = await Contact.findByIdAndUpdate(id, newContact, { new: true });
 
-        if (!updatedContact)
+        if (updatedContact === null)
         {
             console.log("\nContact not found!\n");
 
